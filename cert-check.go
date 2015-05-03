@@ -25,8 +25,11 @@ func init() {
 
 func main() {
 	expireDays := cert.CheckDate(domain, numDays)
-	if (expireDays <= numDays) || (verbose) {
+	if expireDays <= numDays {
 		fmt.Printf("domain: %s, expires in %d days\n", domain, expireDays)
 		os.Exit(1)
+	}
+	if verbose {
+		fmt.Printf("domain: %s, expires in %d days\n", domain, expireDays)
 	}
 }
